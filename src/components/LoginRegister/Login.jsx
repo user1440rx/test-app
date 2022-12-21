@@ -70,7 +70,7 @@ const Login = () => {
                     label="Username"
                     variant="standard"
                     ref={usernameRef}
-                    autoComplete="off"
+                    autoComplete="on"
                     onChange={(e)=> setUser(e.target.value)}
                     />
                     <br /><br />
@@ -84,7 +84,7 @@ const Login = () => {
                     onChange={(e)=> setPwd(e.target.value)}
                     />
                     <br /><br />
-                    <Button size="medium" onClick={handleSubmit} variant="contained" color="secondary">Create Account</Button>
+                    <Button size="medium" onClick={handleSubmit} variant="contained" color="secondary">Sign In</Button>
                     <br /><br />
                     <p>Create Account?<br />
                         <Link to="/register">Register</Link>

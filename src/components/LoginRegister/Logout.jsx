@@ -1,8 +1,8 @@
-import { forwardRef } from "react";
+import { forwardRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import MuiAlert from '@mui/material/Alert';
 import Container from "@mui/material/Container";
-
+import Axios from 'axios';
 
 
 const Alert = forwardRef(function Alert(props, ref) {
@@ -14,12 +14,16 @@ const Alert = forwardRef(function Alert(props, ref) {
 const Logout = () => {
 
     const navigate = useNavigate();
-    const handleLogout = async () => {
-        document.cookie = "userid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        await new Promise(r => setTimeout(r, 2000));
-        navigate("/");        
-    }
-    handleLogout();
+    
+    useEffect(() => {
+        Axios.get('http://localhost:4000/account/logout', {withCredentials: true})
+        .then((res) => {
+            setTimeout(()=>{
+                navigate('/');
+            }, 1000)
+        });
+    }, [navigate])
+
     
     return(
         <>
