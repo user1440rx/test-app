@@ -28,7 +28,7 @@ export default function Listing() {
     const [listData, setListData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/products/listing')
+        axios.get(`${process.env.REACT_APP_API_URL}/products/listing`)
         .then((res) =>
             setListData(res.data)
         );

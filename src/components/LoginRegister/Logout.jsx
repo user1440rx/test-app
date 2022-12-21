@@ -16,7 +16,7 @@ const Logout = () => {
     const navigate = useNavigate();
     
     useEffect(() => {
-        Axios.get('http://localhost:4000/account/logout', {withCredentials: true})
+        Axios.get(`${process.env.REACT_APP_API_URL}/account/logout`, {withCredentials: true})
         .then((res) => {
             setTimeout(()=>{
                 navigate('/');

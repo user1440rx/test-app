@@ -43,7 +43,7 @@ export default function ListUsers() {
     const [listData, setListData] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:4000/account/list', {withCredentials: true})
+        Axios.get(`${process.env.REACT_APP_API_URL}/account/list`, {withCredentials: true})
         .then((res) => {
             setListData(res.data);
         });

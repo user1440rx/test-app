@@ -56,7 +56,7 @@ export default function CartListing() {
     const [listData, setListData] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:4000/cart/list', {withCredentials: true})
+        Axios.get(`${process.env.REACT_APP_API_URL}/cart/list`, {withCredentials: true})
         .then((res) =>
             setListData(res.data)
         );
