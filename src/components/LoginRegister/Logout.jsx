@@ -16,7 +16,7 @@ const Logout = () => {
     const navigate = useNavigate();
     const handleLogout = async () => {
         document.cookie = "userid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        await new Promise(r => setTimeout(r, 1000));
+        await new Promise(r => setTimeout(r, 2000));
         navigate("/");        
     }
     handleLogout();
