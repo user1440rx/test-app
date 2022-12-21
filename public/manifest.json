@@ -1,0 +1,10 @@
+{
+  "short_name": "Test React App",
+  "name": "Appleute Assignment - Test React App ",
+  "icons": [
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
