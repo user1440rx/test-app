@@ -57,7 +57,7 @@ const CartEachItem = (prop) => {
                     })}
                 </Stack>
             </Grid>
-            <Grid item s>
+            <Grid item>
                 <RemoveItemButton />
             </Grid>
             </Grid>

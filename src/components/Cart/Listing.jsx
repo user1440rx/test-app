@@ -9,6 +9,7 @@ import Axios from 'axios';
 import Button from '@mui/material/Button'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 
@@ -54,18 +55,46 @@ export default function CartListing() {
     }
 
     const [listData, setListData] = useState([]);
+    const [accountCheck, setAccountCheck] = useState();
 
     useEffect(() => {
-        Axios.get(`${process.env.REACT_APP_API_URL}/cart/list`, {withCredentials: true})
-        .then((res) =>
-            setListData(res.data)
-        );
-    }, [])
+        
+        Axios.get(`${process.env.REACT_APP_API_URL}/account/check-status`, {withCredentials: true})
+        .then((res) => {
+            if(res.data.message==='Authorized') {
+                setAccountCheck(true);
+            }
+            else {
+                setAccountCheck(false);
+            }
+        })
+        .catch(() => {
+            console.log('Not Authorized')
+        });
+        if (accountCheck===true) {
+            Axios.get(`${process.env.REACT_APP_API_URL}/cart/list`, {withCredentials: true})
+            .then((res) =>
+                setListData(res.data)
+            );
+        }
+        else {
+            setListData([])
+        }
+    }, [accountCheck])
     
   return (
     <React.Fragment>
     <Container>
         <ProductsListing sx={{ flexGrow: 1, width: '100%' }}>
+            {
+                accountCheck ?
+                (<></>)
+                :
+                (<Link id="a-account-btn" to="/login">
+                <Button>Login to access Cart</Button>
+                </Link>)
+            }
+
             {listData.map((item, i) => {
                 const {product_name, _id, product_thumbimage, product_category} = item;
                 return <ListItem key={i} i_name={product_name} i_id={_id} i_timg={product_thumbimage} i_cat={product_category} />

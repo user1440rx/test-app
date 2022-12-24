@@ -18,28 +18,45 @@ const EachItem = (prop) => {
     var product_img = prop.i_timg;
     var product_id = prop.i_id;
     var product_category = prop.i_category;
+    var login_status = prop.i_loginstatus;
 
     
     const AddItemButton = () => {
-        return (
-            <Button onClick={() => {
-                const cartAddURL = `${process.env.REACT_APP_API_URL}/cart/${product_id}/add`;
-                setItemStatus(true);
-                Axios.get(cartAddURL, {withCredentials: true});
-            }} 
-            size="small" variant="contained" endIcon={<AddShoppingCartIcon />}>Add to Cart</Button>
-        );
+        if(login_status===true) {
+            return (
+                <Button onClick={() => {
+                    const cartAddURL = `${process.env.REACT_APP_API_URL}/cart/${product_id}/add`;
+                    setItemStatus(true);
+                    Axios.get(cartAddURL, {withCredentials: true});
+                }} 
+                size="small" variant="contained" endIcon={<AddShoppingCartIcon />}>Add to Cart</Button>
+            );
+        }
+        else {
+            return (
+                <>
+                </>
+            )
+        }
     };
 
     const RemoveItemButton = () => {
+        if(login_status===true) {
         return (
-            <Button onClick={() => {
-                const cartRemoveURL = `${process.env.REACT_APP_API_URL}/cart/${product_id}/remove`;
-                setItemStatus(false);
-                Axios.get(cartRemoveURL, {withCredentials: true});
-            }}
-            size="small"variant="contained" color="error" endIcon={<RemoveShoppingCartIcon />}>Remove from Cart</Button>
-        );
+                <Button onClick={() => {
+                    const cartRemoveURL = `${process.env.REACT_APP_API_URL}/cart/${product_id}/remove`;
+                    setItemStatus(false);
+                    Axios.get(cartRemoveURL, {withCredentials: true});
+                }}
+                size="small"variant="contained" color="error" endIcon={<RemoveShoppingCartIcon />}>Remove from Cart</Button>
+            );
+        }
+        else {
+            return (
+                <>
+                </>
+            )
+        }
     };
     
     const [itemStatus, setItemStatus] = useState("");
@@ -47,15 +64,21 @@ const EachItem = (prop) => {
     const checkCartAPI = `${process.env.REACT_APP_API_URL}/cart/check/${product_id}`;
     
     useEffect(() => {
-        async function checkCartFn() {
-            await Axios.get(checkCartAPI, {withCredentials: true})
-            .then((res) => {
-                setItemStatus(res.data);
-                }
-            );
+        if (login_status===true) {
+            async function checkCartFn() {
+                await Axios.get(checkCartAPI, {withCredentials: true})
+                .then((res) => {
+                    setItemStatus(res.data);
+                    }
+                );
+            }
+            checkCartFn()
         }
-        checkCartFn()
-    }, [checkCartAPI]);
+        else {
+            setItemStatus(false);
+        }
+    }, [checkCartAPI, login_status]);
+    
 
     
 
