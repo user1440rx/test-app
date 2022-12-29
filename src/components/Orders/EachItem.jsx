@@ -27,7 +27,7 @@ const OrderEachItem = (prop) => {
         <StyledPaper sx={{ my: 3, mx: 'auto', p: 2, }}>
             <Grid container spacing={2}>
                 <Grid item xs>
-                    <Typography variant="h5" sx={{color: '#fff', marginBottom: 1}}>Order#{orders_id}</Typography>
+                    <Typography noWrap variant="h5" sx={{color: '#fff', marginBottom: 1}}>Order#{orders_id}</Typography>
                 </Grid>
                 <Stack sx={{marginLeft: 4, marginBottom: 2}} direction="column" spacing={1}>
                     {items_ordered[0].map((id) => {
