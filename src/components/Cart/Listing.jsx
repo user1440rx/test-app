@@ -35,7 +35,7 @@ export default function CartListing() {
 
     const navigate = useNavigate();
     const refreshPage = () => {
-        navigate(0);
+        navigate('/orders');
     }
 
     const PlaceOrderSection = () => {
@@ -44,7 +44,7 @@ export default function CartListing() {
                 <Button onClick={() => {
                         const createOrderAPI = `${process.env.REACT_APP_API_URL}/cart/order`;
                         Axios.get(createOrderAPI, {withCredentials: true}).then((res) => {
-                        refreshPage(); 
+                        refreshPage();  
                         })
                     }}
                     variant="contained" endIcon={<ShoppingBasketIcon />}>
