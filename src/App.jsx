@@ -6,6 +6,7 @@ import NavBar from './components/Navbar/MainNavBar'
 
 import Listing from './components/Homepage/Listing';
 import CartListing from './components/Cart/Listing';
+import OrdersListing from './components/Orders/Listing';
 
 // Login, Register
 import Register from './components/LoginRegister/Register';
@@ -21,6 +22,7 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Listing />} />
       <Route path='/cart' element={<CartListing />} />
+      <Route path='/orders' element={<OrdersListing />} />
       <Route path='/register' element={<Register />} />
       <Route path='/login' element={<Login />} />
       <Route path='/Logout' element={<Logout />} />

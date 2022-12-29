@@ -41,25 +41,25 @@ const CartEachItem = (prop) => {
         <>
         <StyledPaper id={product_id} sx={{ my: 3, mx: 'auto', p: 2, }} >
             <Grid container spacing={2}>
-            <Grid item>
-            <img
-                src={`${product_img}`}
-                alt={product_name}
-                loading="lazy"
-                height="80px"
-            />
-            </Grid>
-            <Grid item xs>
-                <Typography variant="h5" sx={{color: '#fff', marginBottom: 1}}>{product_name}</Typography>
-                <Stack direction="row" spacing={1}>
-                    {product_category.map((ecat, i) => {
-                    return <Chip sx={{backgroundColor: '#B39DDC', fontWeight: '500'}} key={i} label={ecat} size="small" variant="filled" />
-                    })}
-                </Stack>
-            </Grid>
-            <Grid item>
-                <RemoveItemButton />
-            </Grid>
+                <Grid item>
+                <img
+                    src={`${product_img}`}
+                    alt={product_name}
+                    loading="lazy"
+                    height="80px"
+                />
+                </Grid>
+                <Grid item xs>
+                    <Typography variant="h5" sx={{color: '#fff', marginBottom: 1}}>{product_name}</Typography>
+                    <Stack direction="row" spacing={1}>
+                        {product_category.map((ecat, i) => {
+                        return <Chip sx={{backgroundColor: '#B39DDC', fontWeight: '500'}} key={i} label={ecat} size="small" variant="filled" />
+                        })}
+                    </Stack>
+                </Grid>
+                <Grid item>
+                    <RemoveItemButton />
+                </Grid>
             </Grid>
         </StyledPaper>
         </>

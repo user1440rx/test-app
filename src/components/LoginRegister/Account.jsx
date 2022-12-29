@@ -61,6 +61,7 @@ export default function AccountPage() {
                 <>
                 <AccountGridCard name="Logout" url="/logout" />
                 <AccountGridCard name="List Users" url="/list-users" />
+                <AccountGridCard name="Orders" url="/orders" />
                 </>
                 :
                 <>
